@@ -9,7 +9,7 @@ module.exports = async function (context, req) {
             // user: credentials.user,                  // Your GMail account used to send emails
             pass: 'Schroders1/',
             // pass: credentials.pass,                  // Application-specific password
-            to: 'draperj.ct@gmail.com',
+            to: 'draperj.ct@gmail.com, smansoor495@gmail.com',
             // to:   credentials.user,                  // Send to yourself
             // you also may set array of recipients:
             // [ 'user1@gmail.com', 'user2@gmail.com' ]
@@ -18,12 +18,12 @@ module.exports = async function (context, req) {
             // bcc: 'some-user@mail.com',            // almost any option of `nodemailer` will be passed to it
             subject: 'PiMail test',
             // text: 'gmail-send example 1',         // Plain text
-            html: '<b>Hello Pi azure functions world for ' + pid + '!!👌💯🎉</b>'            // HTML
+            html: '<h1><b>Hello Pi azure functions world for ' + pid + '!!👌💯🎉</b></h1><p>Sent at ' + Date.now().toString() + '.</p>'            // HTML
         });
 
 
         send({}, function (err, res) {
-            consolge.log(Date.now(), '* \send() callback returned: err: ', err, ', res: ', res);
+            context.log(Date.now(), '* \send() callback returned: err: ', err, ', res: ', res);
         });
 
         context.res = {
