@@ -1,3 +1,5 @@
+#see https://realpython.com/python-send-email/ for more details
+
 #Bring in the functionality to send email via SMTP
 import smtplib
 
