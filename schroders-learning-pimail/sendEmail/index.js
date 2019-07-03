@@ -1,4 +1,4 @@
-module.exports = async function (context, req) {
+module.exports = function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
     if (req.query.pid) {
@@ -9,7 +9,7 @@ module.exports = async function (context, req) {
             // user: credentials.user,                  // Your GMail account used to send emails
             pass: 'Schroders1/',
             // pass: credentials.pass,                  // Application-specific password
-            to: 'draperj.ct@gmail.com, smansoor495@gmail.com',
+            to: 'draperj.ct@gmail.com',
             // to:   credentials.user,                  // Send to yourself
             // you also may set array of recipients:
             // [ 'user1@gmail.com', 'user2@gmail.com' ]
@@ -22,19 +22,35 @@ module.exports = async function (context, req) {
         });
 
 
-        send({}, function (err, res) {
-            context.log(Date.now(), '* \send() callback returned: err: ', err, ', res: ', res);
-        });
+        return send({}, function (err, res) {
+            let message = "";
+            if (err) {
+                context.log(Date.now(), '*ERROR* \send() callback returned: err: ', err, ', res: ', res);
+                message = "Error sending email. Debug message - " + err;
 
-        context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: "Email message sent for pid " + pid
-        };
+                context.res = {
+                    status: 400,
+                    body: message
+                };
+            } else {
+                context.log(Date.now(), '*SUCCESS* \send() callback returned: res: ', res);
+                message = "Success sending email. Debug message - " + res;
+
+                context.res = {
+                    status: 200,
+                    body: message
+                };
+            }
+
+            context.done();
+        });
     }
     else {
         context.res = {
             status: 400,
             body: "Please pass an query string parameter 'pid' to the function"
         };
+
+        context.done();
     }
 };
