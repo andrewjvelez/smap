@@ -3,5 +3,15 @@
   "azureFunctions.projectLanguage": "JavaScript",
   "azureFunctions.projectRuntime": "~2",
   "debug.internalConsoleOptions": "neverOpen",
-  "azureFunctions.preDeployTask": "npm prune"
+  "azureFunctions.preDeployTask": "npm prune",
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#a7a0cd",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#f4ecea",
+    "activityBarBadge.foreground": "#15202b",
+    "statusBar.background": "#887ebc",
+    "statusBarItem.hoverBackground": "#695cab",
+    "statusBar.foreground": "#15202b"
+  }
 }

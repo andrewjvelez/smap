@@ -5,6 +5,8 @@
   "scripts": {
     "test": "echo \"No tests yet...\""
   },
-  "dependencies": {},
+  "dependencies": {
+    "gmail-send": "^1.2.14"
+  },
   "devDependencies": {}
 }
