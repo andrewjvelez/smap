@@ -1,24 +1,51 @@
+#Bring in the functionality to send email via SMTP
 import smtplib
 
-smtpUser = 'raspberrypi.schroders@gmail.com'
-smtpPass = 'Schroders1/'
+#Create the function
+def SendAlertEmail():
+	"""Function to send basic alert email to email address"""
+	#define the account to send the email from. 
+	#smtpUser = 'raspberrypi.schroders@gmail.com'
+	#smtpPass = 'Schroders1/'
+	smtpUser = 'SmapAlert@gmail.com'
+	smtpPass = 'Schroders1/'
+	smtpServer = 'smtp.gmail.com'
 
-toAdd = 'smansoor495@gmail.com'
-fromAdd = smtpUser
+	#define who will receive the email
+	toAdd = 'andrew.velez@schroders.com'
+	#set the from address. 
+	#Note that the "From" address could be another address
+	fromAdd = smtpUser
 
-subject = 'Python Test'
-header = 'To: ' + toAdd + '\n' + 'From: ' + fromAdd + '\n' + 'Subject : ' + subject
-body = 'Some words here'
+	#Set the email subject
+	subject = 'Python Test'
+	#Set the email header
+	header = 'To: ' + toAdd + '\n' + 'From: ' + fromAdd + '\n' + 'Subject : ' + subject
+	#Define the body
+	body = 'Some words here'
 
-print (header + '\n' + body)
+	#Show the header and body on the console
+	print (header + '\n' + body)
 
-s = smtplib.SMTP('smtp.gmail.com',587)
+	#Create an open connection to the email server
+	s = smtplib.SMTP(smtpServer,587)
 
-s.ehlo()
-s.starttls()
-s.ehlo()
+	#Initiate the connection
+	s.ehlo()
+	#Encrypt the connection
+	s.starttls()
+	#Re-initiate the connection
+	s.ehlo()
 
-s.login(smtpUser, smtpPass)
-s.sendmail(fromAdd, toAdd, header + '\n\n' + body)
+	#Login the email server
+	s.login(smtpUser, smtpPass)
+	#Send the message
+	s.sendmail(fromAdd, toAdd, header + '\n\n' + body)
 
-s.quit()
+	#Close the connection
+	s.quit()
+
+
+
+#Call the function that was created
+SendAlertEmail()
