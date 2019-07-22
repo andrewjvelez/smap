@@ -7,11 +7,11 @@ module.exports = function (context, req) {
         const date = moment(Date.now()).format('MMMM Do YYYY, h:mm:ss a')
         var send = require('gmail-send')({
             //var send = require('../index.js')({
-            user: 'raspberrypi.schroders@gmail.com',
+            user: 'SmapAlert@gmail.com',
             // user: credentials.user,                  // Your GMail account used to send emails
             pass: 'Schroders1/',
             // pass: credentials.pass,                  // Application-specific password
-            to: 'draperj.ct@gmail.com',
+            to: ['andrew.velez@schroders.com', 'draperj.ct@gmail.com'],
             // to:   credentials.user,                  // Send to yourself
             // you also may set array of recipients:
             // [ 'user1@gmail.com', 'user2@gmail.com' ]
