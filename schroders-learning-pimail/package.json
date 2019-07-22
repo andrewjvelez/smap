@@ -6,7 +6,8 @@
     "test": "echo \"No tests yet...\""
   },
   "dependencies": {
-    "gmail-send": "^1.2.14"
+    "gmail-send": "^1.2.14",
+    "moment": "^2.24.0"
   },
   "devDependencies": {}
 }

@@ -1,8 +1,10 @@
+const moment = require('moment');
 module.exports = function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
-    if (req.query.pid) {
-        const pid = req.query.pid;
+    if (req.query.piName) {
+        const piName = req.query.piName;
+        const date = moment(Date.now()).format('MMMM Do YYYY, h:mm:ss a')
         var send = require('gmail-send')({
             //var send = require('../index.js')({
             user: 'raspberrypi.schroders@gmail.com',
@@ -16,9 +18,9 @@ module.exports = function (context, req) {
             // from:    credentials.user,            // from: by default equals to user
             // replyTo: credentials.user,            // replyTo: by default undefined
             // bcc: 'some-user@mail.com',            // almost any option of `nodemailer` will be passed to it
-            subject: 'PiMail test',
+            subject: 'An issue has been reported for ' + piName,
             // text: 'gmail-send example 1',         // Plain text
-            html: '<h1><b>Hello Pi azure functions world for ' + pid + '!!👌💯🎉</b></h1><p>Sent at ' + Date.now().toString() + '.</p>'            // HTML
+            html: '<h1><b>An issue has been reported for ' + piName + '</b></h1><p>A user has reported the issue at ' + date + '.</p><p>Please troubleshoot ' + piName + ' at your earliest convenience.</p>'            // HTML
         });
 
 
