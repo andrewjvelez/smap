@@ -11,16 +11,16 @@ module.exports = function (context, req) {
             // user: credentials.user,                  // Your GMail account used to send emails
             pass: 'Schroders1/',
             // pass: credentials.pass,                  // Application-specific password
-            to: ['andrew.velez@schroders.com', 'draperj.ct@gmail.com'],
+            to: ['schrodersdev@service-now.com', 'draperj.ct@gmail.com'],
             // to:   credentials.user,                  // Send to yourself
             // you also may set array of recipients:
             // [ 'user1@gmail.com', 'user2@gmail.com' ]
             // from:    credentials.user,            // from: by default equals to user
             // replyTo: credentials.user,            // replyTo: by default undefined
             // bcc: 'some-user@mail.com',            // almost any option of `nodemailer` will be passed to it
-            subject: 'An issue has been reported for ' + piName,
+            subject: 'SMAP - An issue has been reported for ' + piName,
             // text: 'gmail-send example 1',         // Plain text
-            html: '<h1><b>An issue has been reported for ' + piName + '</b></h1><p>A user has reported the issue at ' + date + '.</p><p>Please troubleshoot ' + piName + ' at your earliest convenience.</p>'            // HTML
+            html: '<h1><b>An issue has been reported for ' + piName + '</b></h1><p>A user has reported the issue at ' + date + '.</p><p>Please troubleshoot ' + piName + ' at your earliest convenience.</p>piname: ' + piName            // HTML
         });
 
 
