@@ -50,7 +50,7 @@ module.exports = function (context, req) {
     else {
         context.res = {
             status: 400,
-            body: "Please pass an query string parameter 'pid' to the function"
+            body: "Please pass an query string parameter 'piName' to the function"
         };
 
         context.done();
