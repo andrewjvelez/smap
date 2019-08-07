@@ -1,53 +1,59 @@
 #see https://realpython.com/python-send-email/ for more details
 
-#Bring in the functionality to send email via SMTP
+#Bring in the functionality to send email via SMTP, to get the date, and to format emails with HTML
 import smtplib
+from datetime import date
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 #Create the function
-def SendAlertEmail():
-	"""Function to send basic alert email to email address"""
-	#define the account to send the email from. 
-	#smtpUser = 'raspberrypi.schroders@gmail.com'
-	#smtpPass = 'Schroders1/'
-	smtpUser = 'SmapAlert@gmail.com'
-	smtpPass = 'Schroders1/'
-	smtpServer = 'smtp.gmail.com'
+def SendAlertEmail(piName):
+    """Function to send basic alert email to email address"""
 
-	#define who will receive the email
-	toAdd = 'andrew.velez@schroders.com'
-	#set the from address. 
-	#Note that the "From" address could be another address
-	fromAdd = smtpUser
+    #Set up variables for From Address and To Address
+    From = "SmapAlert@gmail.com"
+    To = "Sami.Mansoor@schroders.com"
 
-	#Set the email subject
-	subject = 'Python Test'
-	#Set the email header
-	header = 'To: ' + toAdd + '\n' + 'From: ' + fromAdd + '\n' + 'Subject : ' + subject
-	#Define the body
-	body = 'Some words here'
+    #Set up variable for today's date
+    today = date.today()
 
-	#Show the header and body on the console
-	print (header + '\n' + body)
+    #Create the container for the email message
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = 'SMAP - An issue has been reported for ' + piName
+    msg['From'] = From
+    msg['To'] = To
 
-	#Create an open connection to the email server
-	s = smtplib.SMTP(smtpServer,587)
+    #Format the body of the message with HTML
+    html = """\
+        <html>
+            <h1><b>An issue has been reported for """ + str(piName) + """ </b></h1>
+            <p>A user has reported the issue on """ + str(today) + """</p>
+            <p>Please troubleshoot """ + str(piName) + """ at your earliest convenience.</p>
+        </html>
+        """
 
-	#Initiate the connection
-	s.ehlo()
-	#Encrypt the connection
-	s.starttls()
-	#Re-initiate the connection
-	s.ehlo()
+    #Attach the message part into the container
+    msg.attach(MIMEText(html, 'html'))
 
-	#Login the email server
-	s.login(smtpUser, smtpPass)
-	#Send the message
-	s.sendmail(fromAdd, toAdd, header + '\n\n' + body)
+   #Create an open connection to the email server
+    s = smtplib.SMTP('smtp.gmail.com',587)
 
-	#Close the connection
-	s.quit()
+    #Initiate the connection
+    s.ehlo()
+    #Encrypt the connection
+    s.starttls()
+    #Re-initiate the connection
+    s.ehlo()
+
+    #Login the email server
+    s.login('SmapAlert@gmail.com', 'Schroders1/')
+    #Send the message
+    s.sendmail(From, To, msg.as_string())
+
+    #Close the connection
+    s.quit()
 
 
 
 #Call the function that was created
-SendAlertEmail()
+SendAlertEmail('17th Floor Coffee Machine')
