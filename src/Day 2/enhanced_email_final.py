@@ -12,7 +12,7 @@ def SendAlertEmail(piName):
 
     #Set up variables for From Address and To Address
     From = "SmapAlert@gmail.com"
-    To = "Sami.Mansoor@schroders.com"
+    To = "andrewjvelez@gmail.com"
 
     #Set up variable for today's date
     today = date.today()
