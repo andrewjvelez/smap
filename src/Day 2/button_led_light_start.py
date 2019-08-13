@@ -27,11 +27,12 @@ buttonIsReleased = 1
 lightIsOn = 1
 lightIsOff = 0
 
-ledState = lightIsOff
-
 # this while cycle infinitely checks the state of a button on the breadboard every 0.1 seconds (100 milliseconds)
 # and send updated data to a breadboard
 while True:
+    # initialize ledState variable 
+    ledState = lightIsOff
+
     # read the current button state from breadboard
     currentButtonState = GPIO.input(buttonPin)
 
@@ -46,7 +47,7 @@ while True:
     #######
 
     # send the state of the LED to breadbord, so it can turn a light on or off
-    GPIO.output(lightPin, lightState)
+    GPIO.output(lightPin, ledState)
 
     # this prevents code from running to fast and using too much resources
     # we stop everything for 0.01 seconds as humans can't press the button faster than 10 times per second

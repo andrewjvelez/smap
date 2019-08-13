@@ -49,7 +49,7 @@ while True:
         ledState = lightIsOff
     
     # send the state of the LED to breadbord, so it can turn a light on or off
-    GPIO.output(lightPin, lightState)
+    GPIO.output(lightPin, ledState)
 
     # this prevents code from running to fast and using too much resources
     # we stop everything for 0.01 seconds as humans can't press the button faster than 10 times per second
