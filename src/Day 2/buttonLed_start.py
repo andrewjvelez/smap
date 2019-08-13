@@ -1,11 +1,11 @@
 from time import sleep
 import RPi.GPIO as GPIO
 
-# assign LED pin number to a variable
+# DEFINE PINS
 lightPin = 4
-# assign button pin number to a variable
 buttonPin = 17
 
+# SETUP BREADBOARD
 # The GPIO.BCM option means that you are referring to the pins by the "Broadcom SOC channel" number,
 # as you can see on breadboard printed schema
 GPIO.setmode(GPIO.BCM)
@@ -16,28 +16,32 @@ GPIO.setup(lightPin, GPIO.OUT)
 # tell the system the an BUTTON pin will be an input (we will receive data from there)
 GPIO.setup(buttonPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
+# DEFINE VARIABLEs
+# response values for button from a breadboard
+buttonIsPressed = 0
+buttonIsReleased = 1
+# request values for LED on a breadboard
+lightIsOn = 1
+lightIsOff = 0
+
+ledState = lightIsOff
+
 # this while cycle infinitely checks the state of a button on the breadboard every 0.1 seconds (100 milliseconds)
 # and send updated data to a breadboard
 while True:
-    # response values for button from a breadboard
-    buttonIsPressed = 0
-    buttonIsReleased = 1
-
-    # request values for LED to a breadboard
-    lightIsOn = 1
-    lightIsOff = 0
-
     # read the current button state from breadboard
     currentButtonState = GPIO.input(buttonPin)
 
-    # make a decision what to do based on the button state
-    if currentButtonState == buttonIsPressed:
-        # if the button is pressed set the state of the LED to true
-        ledState = lightIsOn 
-    elif currentButtonState == buttonIsReleased:
-        # otherwise, if the button is not pressed, set the state of the LED to off
-        ledState = lightIsOff
+    ####### TODO area: 
+    # STEP 1: Implement logic for these requirements:
+    # 1. When the button is pressed - set the light on.
+    # 2. When the button is not pressed - set the light off.
+
+    # STEP 2: Implement logic to send the email:
+    # 1. When the buttton is pressed - send an email about the problem.
     
+    #######
+
     # send the state of the LED to breadbord, so it can turn a light on or off
     GPIO.output(lightPin, lightState)
 
