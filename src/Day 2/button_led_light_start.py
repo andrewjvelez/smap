@@ -1,6 +1,9 @@
 from time import sleep
 import RPi.GPIO as GPIO
 
+# TODO: Define you device name
+piName = None
+
 # DEFINE PINS
 lightPin = 4
 buttonPin = 17
