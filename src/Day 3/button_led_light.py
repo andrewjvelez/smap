@@ -1,5 +1,6 @@
 from time import sleep
 import RPi.GPIO as GPIO
+from email_class import ServiceAlert
 
 # TODO: Define you device name
 piName = None
@@ -44,9 +45,11 @@ while True:
         print ("Button Pressed")
         ledState = lightIsOn
         
+        
     # STEP 2: Implement logic to send the email:
     # 1. When the buttton is pressed - send an email about the problem.
-    
+        my_alert = ServiceAlert()
+        my_alert.SendEmail()
     #######
 
     # send the state of the LED to breadbord, so it can turn a light on or off
@@ -54,4 +57,4 @@ while True:
 
     # this prevents code from running to fast and using too much resources
     # we stop everything for 0.01 seconds as humans can't press the button faster than 10 times per second
-    sleep(.10)
+    sleep(.1)

@@ -1,8 +1,8 @@
 from time import sleep
 import RPi.GPIO as GPIO
+from email_class import ServiceAlert
 
-# TODO: Define you device name
-piName = None
+piName = 'some name'
 
 # DEFINE PINS
 lightPin = 4
@@ -27,28 +27,27 @@ buttonIsReleased = 1
 lightIsOn = 1
 lightIsOff = 0
 
+ledState = lightIsOff
+
 # this while cycle infinitely checks the state of a button on the breadboard every 0.1 seconds (100 milliseconds)
 # and send updated data to a breadboard
 while True:
-    # initialize ledState variable 
-    ledState = lightIsOff
-
     # read the current button state from breadboard
     currentButtonState = GPIO.input(buttonPin)
 
-    ####### TODO area: 
-    # STEP 1: Implement logic for these requirements:
-    # 1. When the button is pressed - set the light on.
-    # 2. When the button is not pressed - set the light off.
+    # make a decision what to do based on the button state
     if currentButtonState == buttonIsPressed:
-        print ("Button Pressed")
-        ledState = lightIsOn
-        
-    # STEP 2: Implement logic to send the email:
-    # 1. When the buttton is pressed - send an email about the problem.
-    
-    #######
 
+        # send the email only once
+        if ledState == lightIsOff:
+            #call function to send email
+            print("Sending email...")
+            #SendAlertEmail(piName)
+
+        ledState = lightIsOn 
+    elif currentButtonState == buttonIsReleased:
+        ledState = lightIsOff
+    
     # send the state of the LED to breadbord, so it can turn a light on or off
     GPIO.output(lightPin, ledState)
 

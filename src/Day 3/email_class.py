@@ -6,6 +6,13 @@ from datetime import date
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+
+#to create a service alert
+#new_alert = ServiceAlert()
+#OR
+#new_alert = ServiceAlert("Device Location")
+
+
 #define the ServiceAlert class
 class ServiceAlert():
 
