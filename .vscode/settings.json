@@ -8,5 +8,6 @@
         "statusBar.background": "#e23997",
         "statusBarItem.hoverBackground": "#e965ae",
         "statusBar.foreground": "#e7e7e7"
-    }
+    },
+    "python.pythonPath": "C:\\Users\\koshkav\\AppData\\Local\\Programs\\Python\\Python37-32\\python.exe"
 }

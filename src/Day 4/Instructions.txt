@@ -1,0 +1,34 @@
+
+Day 4 instructions for "Sending email to Service now using Azure" session: 
+
+1. Run "git pull" command in command line - it will pull latest changes from the code repository.
+2. Run "pip install requests" command - it will install the library that we want to use.
+3. Import "requests" library to your python script
+4. Update 'piName" variable fron the list below.
+5. Add this line after piName variable:
+    azureCloudFunctionLink = "https://schroders-learning-pimail.azurewebsites.net/api/sendEmail?piName=" + piName
+It will set the Azure Function address to a variable.
+6. Remove send mail function and add:
+    response = requests.get(url = azureCloudFunctionLink)
+
+It will actually use the imported requests library to call the Azure Function by the address that we assigned to azureCloudFunctionLink variable.
+
+7. To see the result of the request, print the status code of the response. Status code 200 means that the function call was successfull.
+    print("Response: " + str(response.status_code))
+
+8. Run your program and click the button!
+
+Finish! :) 
+
+This is a list of Raspberry Pi names that we have to use in order to call azure function.
+1. Name: Coffee Machine - 17th Floor
+2. Name: Coffee Machine - 18th Floor
+3. Name: Coffee Machine - 19th Floor
+4. Name: Coffee Machine - 20th Floor
+5. Name: Coffee Machine - 21st Floor
+6. Name: Printer - 17th Floor North
+7. Name: Printer - 18th Floor North
+8. Name: Printer - 18th Floor North
+9. Name: Printer - 19th Floor Reception
+10. Name: Printer - 20th Floor North
+11. Name: Printer - 21st Floor North

@@ -3,7 +3,7 @@ import RPi.GPIO as GPIO
 import requests
 
 piName = 'some name'
-azureServiceLink = "https://schroders-learning-pimail.azurewebsites.net/api/sendEmail?piName=" + piName
+azureCloudFunctionLink = "https://schroders-learning-pimail.azurewebsites.net/api/sendEmail?piName=" + piName
 
 # DEFINE PINS
 lightPin = 4
@@ -45,7 +45,7 @@ while True:
             # call function to send email
             print("Sending email...")
             # sending get request and saving the response as response object 
-            response = requests.get(url = azureServiceLink)
+            response = requests.get(url = azureCloudFunctionLink)
             #print repsponse code
             print("Response: " + str(response.status_code))
         ledState = lightIsOn 
