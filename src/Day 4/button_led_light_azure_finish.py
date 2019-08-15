@@ -47,7 +47,7 @@ while True:
             # sending get request and saving the response as response object 
             response = requests.get(url = azureServiceLink)
             #print repsponse code
-            print("Response: " + response.status_code)
+            print("Response: " + str(response.status_code))
         ledState = lightIsOn 
     elif currentButtonState == buttonIsReleased:
         ledState = lightIsOff
