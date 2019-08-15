@@ -1,3 +1,5 @@
+This is a list of Raspberry Pi names that we have to use in order to call azure function.
+
 1. Name: Coffee Machine - 17th Floor
 2. Name: Coffee Machine - 18th Floor
 3. Name: Coffee Machine - 19th Floor
