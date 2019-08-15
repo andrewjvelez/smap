@@ -44,9 +44,9 @@ while True:
             GPIO.output(lightPin, lightIsOn)
             # call function to send email
             print("Sending email...")
-            # sending get request and saving the response as response object 
+            # Call Azure Function and assign response to the variable
             response = requests.get(url = azureCloudFunctionLink)
-            #print repsponse code
+            # Print repsponse code from the response
             print("Response: " + str(response.status_code))
         ledState = lightIsOn 
     elif currentButtonState == buttonIsReleased:

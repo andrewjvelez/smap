@@ -2,12 +2,14 @@
 Day 4 instructions for "Sending email to Service now using Azure" session: 
 
 1. Run "git pull" command in command line - it will pull latest changes from the code repository.
-2. Run "pip install requests" command - it will install the library that we want to use.
-3. Import "requests" library to your python script
+2. Run "pip install requests" command - it will install the library that we want to use for calling Azure function.
+3. Import "requests" library to your python script.
 4. Update 'piName" variable fron the list below.
 5. Add this line after piName variable:
     azureCloudFunctionLink = "https://schroders-learning-pimail.azurewebsites.net/api/sendEmail?piName=" + piName
+
 It will set the Azure Function address to a variable.
+
 6. Remove send mail function and add:
     response = requests.get(url = azureCloudFunctionLink)
 

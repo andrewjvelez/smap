@@ -45,7 +45,7 @@ while True:
             print("Sending email...")
             # TODO: Call Azure Function and assign response to the variable
 
-            # TODO: print repsponse code from the response
+            # TODO: Print repsponse code from the response
 
         ledState = lightIsOn 
     elif currentButtonState == buttonIsReleased:
